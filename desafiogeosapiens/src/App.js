@@ -1,9 +1,12 @@
+import { BrowserRouter, Router } from 'react-router-dom';
+
+import Home from './pages/Home';
 
 function App() {
   return (
-    <div>
-
-    </div>
+    <BrowserRouter>
+      <Router exact path="/" component={Home} />
+    </BrowserRouter>
   );
 }
 
