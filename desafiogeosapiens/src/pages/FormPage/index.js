@@ -4,6 +4,7 @@ import { getFormStructure } from '../../services/query';
 
 import Header from '../../components/Header';
 import background from '../../assets/images/background.jpeg';
+import { Button } from '../../components/theme';
 
 import { Container, Image, Card } from './styles';
 
@@ -28,6 +29,7 @@ function FormPage({ match }) {
           {formStructure && formStructure.map(input => (
             <label>{input.label}</label>
           ))}
+          <Button onClick={() => console.log("clicado")}>Enviar</Button>
         </Card>
       </Container>
     </>
