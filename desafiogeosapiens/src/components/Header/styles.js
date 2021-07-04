@@ -31,8 +31,11 @@ export const MenuLink = styled(Link)`
   padding: 0 24px;
   display: flex;
   align-items: center;
+  background-color: ${({focused}) => focused ? 'var(--color-button-hover)' : 'transparent'};
+  font-weight: ${({focused}) => focused ? 500 : 400};
   transition: background 0.5s;
   &:hover {
     background: var(--color-button-hover);
+    font-weight: 500;
   }
 `;
