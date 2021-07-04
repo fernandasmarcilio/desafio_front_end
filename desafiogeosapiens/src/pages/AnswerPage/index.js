@@ -2,7 +2,7 @@ import React from 'react';
 
 import Header from '../../components/Header';
 
-function List({ match }) {
+function AnswerPage({ match }) {
   const { path } = match;
 
   return (
@@ -10,4 +10,4 @@ function List({ match }) {
   );
 }
 
-export default List;
+export default AnswerPage;

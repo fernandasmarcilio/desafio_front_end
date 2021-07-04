@@ -1,15 +1,15 @@
 import { BrowserRouter, Route } from 'react-router-dom';
 
-import Home from './pages/Home';
-import List from './pages/List';
+import FormPage from './pages/FormPage';
+import AnswerPage from './pages/AnswerPage';
 
 import './global/style.css';
 
 function App() {
   return (
     <BrowserRouter>
-      <Route exact path="/" component={Home} />
-      <Route path="/list" component={List} />
+      <Route exact path="/" component={FormPage} />
+      <Route path="/answer" component={AnswerPage} />
     </BrowserRouter>
   );
 }

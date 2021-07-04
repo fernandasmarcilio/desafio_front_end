@@ -21,21 +21,24 @@ export const MenuContainer = styled.div`
   margin: 0 16px;
   display: flex;
   height: 100%;
+`;
 
+export const MenuButton = styled.div`
+  height: 100%;
+  display: flex;
+  background-color: ${({focused}) => focused ? 'var(--color-button-hover)' : 'transparent'};
+  transition: background 0.5s;
+  &:hover {
+    background: var(--color-button-hover);
+    font-weight: 500;
+  }
 `;
 
 export const MenuLink = styled(Link)`
   font-size: 16px;
   text-decoration: none;
   color: var(--color-secondary);
-  padding: 0 24px;
   display: flex;
   align-items: center;
-  background-color: ${({focused}) => focused ? 'var(--color-button-hover)' : 'transparent'};
-  font-weight: ${({focused}) => focused ? 500 : 400};
-  transition: background 0.5s;
-  &:hover {
-    background: var(--color-button-hover);
-    font-weight: 500;
-  }
+  padding: 0 24px;
 `;

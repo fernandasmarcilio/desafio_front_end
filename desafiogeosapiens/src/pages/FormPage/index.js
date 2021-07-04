@@ -7,7 +7,7 @@ import background from '../../assets/images/background.jpeg';
 
 import { Container, Image, Card } from './styles';
 
-function Home({ match }) {
+function FormPage({ match }) {
   const { path } = match;
   const [ formStructure, setFormStructure ] = useState(null);
 
@@ -34,4 +34,4 @@ function Home({ match }) {
   );
 }
 
-export default Home;
+export default FormPage;

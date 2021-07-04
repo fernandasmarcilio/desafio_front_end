@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Logo, MenuContainer, MenuLink } from './styles';
+import { Container, Logo, MenuContainer, MenuButton, MenuLink } from './styles';
 
 function Header({routePath}) {
 
@@ -7,8 +7,12 @@ function Header({routePath}) {
     <Container>
       <Logo src="https://coletum.com/bundles/site/assets/images/coletum-horizontal.svg?1372"/>
       <MenuContainer>
-        <MenuLink focused={routePath === '/'} to="/">Home</MenuLink>
-        <MenuLink focused={routePath === '/list'} to="/list">Lista</MenuLink>
+        <MenuButton focused={routePath === '/'}>
+          <MenuLink  to="/">Formulário</MenuLink>
+        </MenuButton>
+        <MenuButton focused={routePath === '/answer'}>
+          <MenuLink  to="/answer">Respostas</MenuLink>
+        </MenuButton>
       </MenuContainer>
     </Container>
   );
