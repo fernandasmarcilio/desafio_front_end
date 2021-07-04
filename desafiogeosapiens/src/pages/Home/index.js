@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import api from '../../services/api';
+import { getFormStructure } from '../../services/query';
 
 import Header from '../../components/Header';
 import background from '../../assets/images/background.jpeg';
@@ -7,13 +9,26 @@ import { Container, Image, Card } from './styles';
 
 function Home({ match }) {
   const { path } = match;
+  const [ formStructure, setFormStructure ] = useState(null);
+
+  useEffect(() => {
+    api.get('', { 
+      params: { query: getFormStructure}
+    }).then(({data}) => {
+      setFormStructure(data.data.form_structure);
+    })
+  }, [])
 
   return (
     <>
       <Header routePath={path} />
       <Container>
         <Image src={background} />
-        <Card />
+        <Card>
+          {formStructure && formStructure.map(input => (
+            <label>{input.label}</label>
+          ))}
+        </Card>
       </Container>
     </>
   );
