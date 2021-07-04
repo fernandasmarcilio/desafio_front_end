@@ -2,9 +2,11 @@ import React from 'react';
 
 import Header from '../../components/Header';
 
-function Home() {
+function Home({ match }) {
+  const { path } = match;
+
   return (
-    <Header />
+    <Header routePath={path} />
   );
 }
 
