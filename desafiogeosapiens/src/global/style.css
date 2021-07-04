@@ -1,0 +1,23 @@
+:root {
+  --color-primary-light: #98bdb0;
+  --color-primary: #40a999;
+  --color-secondary: #483232;
+  --color-white: #fff;
+  --color-button-hover: rgba(64, 169, 153, 0.18);
+  --color-background: #eef2f2;
+
+  font-size: 60%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font: 400 14px Roboto, sans-serif;
+  background: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+}
