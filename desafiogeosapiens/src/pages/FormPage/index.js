@@ -20,6 +20,66 @@ function FormPage({ match }) {
     })
   }, [])
 
+  const RenderInput = (inputData) => {
+    console.log(inputData);
+    const {type, label, options, componentId} = inputData;
+    switch (type) {
+      case 'textfield':
+        return (
+          <>
+            <label>{label}</label>
+            <input />
+          </>
+        );
+      case 'checkboxfield':
+        return (
+          <>
+            <label>{label}</label>
+            <select name={componentId} multiple>
+              {options.map(option => (
+                <option value={option}>{option}</option>
+              ))}
+            </select>
+            </>
+        );   
+      case 'ratingfield': 
+        return (
+          <>
+            <label>{label}</label>
+            <div style={{ display: 'flex', flexDirection: 'row', width: '100%', justifyContent: 'space-between' }}>
+              {[0,1,2,3,4].map(index => (
+                <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                  <label>{index + 1}</label>
+                  <input type="radio" name={componentId} />
+                </div>
+              ))}
+              </div>
+            </>
+        );
+      case 'datefield':
+        return (
+          <>
+          <label>{label}</label>
+          <input type="date" />
+        </>
+        )
+      case 'urlfield': 
+        return (
+          <>
+          <label>{label}</label>
+          <input type="url" />
+        </>
+        )
+      default:
+        return (
+          <>
+            <label>{label}</label>
+            <input />
+          </>
+        );
+    }
+  }
+
   return (
     <>
       <Header routePath={path} />
@@ -27,7 +87,7 @@ function FormPage({ match }) {
         <Image src={background} />
         <Card>
           {formStructure && formStructure.map(input => (
-            <label>{input.label}</label>
+            RenderInput(input)
           ))}
           <Button onClick={() => console.log("clicado")}>Enviar</Button>
         </Card>
