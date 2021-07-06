@@ -23,7 +23,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-input,
 select {
   padding: 8px 16px;
   border-radius: 8px;
@@ -31,7 +30,6 @@ select {
   margin: 8px 0;
 }
 
-input:focus,
 select:focus {
   border: 1px solid var(--color-primary);
 }
