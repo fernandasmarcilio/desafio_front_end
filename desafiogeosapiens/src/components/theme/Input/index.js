@@ -3,6 +3,12 @@ import React from 'react';
 import { Container, InputContainer, SelectContainer, Option } from './styles';
 
 function Input({ id, label, type, onChange, options}) {
+  const inputsType = {
+    'textfield': 'text',
+    'datefield': 'date',
+    'urlfield': 'url'
+  }
+
   return (
     <Container key={id}>
       <label>{label}</label>
@@ -13,7 +19,7 @@ function Input({ id, label, type, onChange, options}) {
           ))}
         </SelectContainer>
       ) : (
-        <InputContainer type={type} onChange={onChange} id={id} />
+        <InputContainer type={inputsType[type]} onChange={onChange} id={id} />
       )}
     </Container>
   );
