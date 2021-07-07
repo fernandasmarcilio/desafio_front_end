@@ -8,6 +8,7 @@
   --color-background: #eef2f2;
   --color-yellow: #ffb92f;
   --color-gray: #99a8a6;
+  --color-secondary-transparent: rgba(72, 50, 50, 0.3);
 
   font-size: 60%;
 }
