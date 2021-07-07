@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import api from '../../services/api';
 import { getFormStructure } from '../../services/query';
+
+import {INITIAL_STATE, ACTIONS, formReducer } from '../../reducers/form/reducer'
 
 import { Header, Rating, Container} from '../../components';
 import { Button, Loading, Input } from '../../components/theme';
@@ -9,34 +11,26 @@ import { Form } from './styles';
 
 function FormPage({ match }) {
   const { path } = match;
-  const [ formStructure, setFormStructure ] = useState(null);
-  const [ formData, setFormData ] = useState(null);
-  const [ loading, setLoading ] = useState(true);
+  const [state, dispatch] = useReducer(
+    formReducer,
+    INITIAL_STATE,
+  );
+
+  const { formStructure, formData, loading } = state;
 
   const handleOnChange = (event) => {
     const { value, id } = event.target;
-
-    setFormData({
-      ...formData,
-      [id]: value
-    })
+    dispatch({ type: ACTIONS.setFormData, payload: { id, value}});
   }
 
   const handleOnChangeSelect = (event) => {
     const { id, selectedOptions } = event.target;
     const options = Array.from(selectedOptions, option => option.value);
-
-    setFormData({
-      ...formData,
-      [id]: options
-    })
+    dispatch({ type: ACTIONS.setFormData, payload: { id, value: options}});
   }
 
   const handleOnChangeRating = (value, id) => {
-    setFormData({
-      ...formData,
-      [id]: value
-    })
+    dispatch({ type: ACTIONS.setFormData, payload: { id, value}});
   }
 
   const handleOnSubmit = (event) => {
@@ -49,8 +43,7 @@ function FormPage({ match }) {
     api.get('', { 
       params: { query: getFormStructure}
     }).then(({data}) => {
-      setFormStructure(data.data.form_structure);
-      setLoading(false);
+      dispatch({ type: ACTIONS.setFormStructure, payload: data.data.form_structure });
     })
     
   }, [])
@@ -60,15 +53,15 @@ function FormPage({ match }) {
     switch (type) {
       case 'checkboxfield':
         return (
-          <Input type="select" id={componentId} label={label} onChange={handleOnChangeSelect} options={options} />
+          <Input key={componentId} type="select" id={componentId} label={label} onChange={handleOnChangeSelect} options={options} />
         );   
       case 'ratingfield': 
         return (
-          <Rating label={label} id={componentId} onChange={handleOnChangeRating} />
+          <Rating key={componentId} label={label} id={componentId} onChange={handleOnChangeRating} />
         );
       default:
         return (
-          <Input type={type} id={componentId} label={label} onChange={handleOnChange} />
+          <Input key={componentId} type={type} id={componentId} label={label} onChange={handleOnChange} />
         );
     }
   }

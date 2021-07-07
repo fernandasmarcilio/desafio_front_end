@@ -10,12 +10,12 @@ function Input({ id, label, type, onChange, options}) {
   }
 
   return (
-    <Container key={id}>
+    <Container>
       <label>{label}</label>
       {type === 'select' ? (
         <SelectContainer name={id} multiple onChange={onChange} id={id}>
           {options.map(option => (
-            <Option value={option}>{option}</Option>
+            <Option key={option} value={option}>{option}</Option>
           ))}
         </SelectContainer>
       ) : (

@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import api from '../../services/api';
 import { getFormAnswer, getFormStructure } from '../../services/query';
+
+import {INITIAL_STATE, ACTIONS, answerReducer } from '../../reducers/answer/reducer';
 
 import { Header, Container, Modal } from '../../components';
 import { Loading } from '../../components/theme';
@@ -9,19 +11,21 @@ import { ListContainer, Title, Description, DetailsContainer } from './styles';
 
 function AnswerPage({ match }) {
   const { path } = match;
-  const [ answers, setAnswers ] = useState(null);
-  const [ formStructure, setFormStructure ] = useState(null);
-  const [ loading, setLoading ] = useState(true);
-  const [ openModal, setOpenModal ] = useState(false);
-  const [ answerDetails, setAnswerDetails ] = useState(null);
+  
+  const [state, dispatch] = useReducer(
+    answerReducer,
+    INITIAL_STATE,
+  );
+
+  const { answers, formStructure, loading, openModal, answerDetails } = state;
 
   const handleOnClick = (position) => {
-    setAnswerDetails(answers[position])
+    dispatch({ type: ACTIONS.setAnswersDetails, payload: answers[position] });
     handleOpenModal();
   }
 
   const handleOpenModal = () => {
-    setOpenModal(!openModal);
+    dispatch({ type: ACTIONS.openModal });
   }
 
   useEffect(() => {
@@ -29,7 +33,7 @@ function AnswerPage({ match }) {
       params: { query: getFormAnswer }
     }).then(({data}) => {
       const answerData = data.data.answer.map(answer => answer.answer);
-      setAnswers(answerData);
+      dispatch({ type: ACTIONS.setAnswers, payload: answerData });
     })
   }, []);
 
@@ -40,13 +44,13 @@ function AnswerPage({ match }) {
       const formStructureData = data.data.form_structure.map((form) => {
         return {id: form.componentId, label: form.label, type: form.type}
       });
-      setFormStructure(formStructureData)
+      dispatch({ type: ACTIONS.setFormStructure, payload: formStructureData });
     })
   }, [])
 
   useEffect(() => {
     if(answers !== null && formStructure !== null) {
-      setLoading(false);
+      dispatch({ type: ACTIONS.isLoaded });
     }
   }, [answers, formStructure])
 
@@ -68,8 +72,8 @@ function AnswerPage({ match }) {
     <>
       <Modal open={openModal} onClick={handleOpenModal}>
         <>
-          {formStructure && formStructure.map(form => (
-            <DetailsContainer>
+          {formStructure && formStructure.map((form) => (
+            <DetailsContainer key={form.id}>
               <Title>
                 {form.label}: 
               </Title>
@@ -82,6 +86,7 @@ function AnswerPage({ match }) {
           ))}
         </>
       </Modal>
+
       <Header routePath={path} />
       <Container>
       {loading ? (
@@ -89,7 +94,7 @@ function AnswerPage({ match }) {
       ) : (
         <>
         {answers && answers.map((answer, index) => (
-          <ListContainer onClick={() => handleOnClick(index)} >{answer[formStructure[0].id]}</ListContainer>
+          <ListContainer key={index} onClick={() => handleOnClick(index)}>{answer[formStructure[0].id]}</ListContainer>
         ))}
         </>
       )}

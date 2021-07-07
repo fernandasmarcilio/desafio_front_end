@@ -11,7 +11,7 @@ function RatingComponent({label, id, onChange}) {
   }
 
   const RenderStars = () => (
-    [...Array(5)].map((_, index) => <Star full={index < value} value={index+1} onClick={() => handleOnClick(index + 1)} />)
+    [...Array(5)].map((_, index) => <Star key={`rating-${index}`} $full={index < value} value={index+1} onClick={() => handleOnClick(index + 1)} />)
   )
 
   return (
