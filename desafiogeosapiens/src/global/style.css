@@ -6,6 +6,8 @@
   --color-button-hover: rgba(64, 169, 153, 0.18);
   --color-button-primary-dark: #368f82;
   --color-background: #eef2f2;
+  --color-yellow: #ffb92f;
+  --color-gray: #99a8a6;
 
   font-size: 60%;
 }
