@@ -2,12 +2,10 @@ import React, { useEffect, useState } from 'react';
 import api from '../../services/api';
 import { getFormStructure } from '../../services/query';
 
-import Header from '../../components/Header';
-import Rating from '../../components/Rating';
-import background from '../../assets/images/background.jpeg';
-
+import { Header, Rating, Container} from '../../components';
 import { Button, Loading, Input } from '../../components/theme';
-import { Container, Image, Card, Form } from './styles';
+
+import { Form } from './styles';
 
 function FormPage({ match }) {
   const { path } = match;
@@ -79,8 +77,6 @@ function FormPage({ match }) {
     <>
       <Header routePath={path} />
       <Container>
-        <Image src={background} />
-        <Card>
           {loading ? (
             <Loading />
           ) : (
@@ -91,7 +87,6 @@ function FormPage({ match }) {
               <Button type="submit">Enviar</Button>
             </Form>
           )}
-        </Card>
       </Container>
     </>
   );
