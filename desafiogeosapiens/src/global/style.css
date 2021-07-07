@@ -22,14 +22,3 @@ body {
   background: var(--color-background);
   -webkit-font-smoothing: antialiased;
 }
-
-select {
-  padding: 8px 16px;
-  border-radius: 8px;
-  border: 1px solid var(--color-secondary);
-  margin: 8px 0;
-}
-
-select:focus {
-  border: 1px solid var(--color-primary);
-}
