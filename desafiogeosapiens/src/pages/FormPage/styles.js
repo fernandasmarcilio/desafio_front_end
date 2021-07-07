@@ -22,7 +22,15 @@ export const Card = styled.div`
   border-radius: 24px;
   box-shadow: black 0px 5px 40px -30px;
   margin-top: -150px;
+  margin-bottom: 24px;
   display: flex;
   flex-direction: column;
   padding: 24px 16px;
+  justify-content: center;
+`;
+
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 `;
