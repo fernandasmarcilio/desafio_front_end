@@ -1,5 +1,5 @@
 # Como rodar o projeto
-Clone o reporitório
+Clone o repositório
 
 Vai para o diretório desafio_front_end/desafiogeosapiens
 
