@@ -8,7 +8,7 @@ function Container({children}) {
   return (
     <BackgroundContainer>
       <Image src={background} />
-      <Card>
+      <Card style={{ minHeight: '300px', marginTop: '-150px'}}>
         {children}
       </Card>
     </BackgroundContainer>
