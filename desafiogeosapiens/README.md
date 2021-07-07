@@ -1,70 +1,22 @@
-# Getting Started with Create React App
+# Como rodar o projeto
+Clone o reporitório
+Vai para o diretório desafio_front_end/desafiogeosapiens
+Rode o comando `yarn` para instalar as dependencias (Necessário ter o [yarn](https://yarnpkg.com/) instalado).
+Rode o comando `yarn start` para rodar o projeto. O projeto vai rodar no navegador no [http://localhost:3000](http://localhost:3000).
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Estratégia
+Primeiramente eu analisei o desafio, verificando o que ia ter e as funcionalidades. 
+Em seguida fiz um protótipo de tela para me basear, o link esta [aqui](https://www.figma.com/file/RqKg8zzGzuL2RkMeiHY6Vk/desafio-front?node-id=0%3A1).
+Depois iniciei o projeto com react, instalei algumas depedências que ja sabia que iria utilizar
+- Axios: para chamada da web service. Eu fiquei insegura nessa parte pois não sabia o melhor jeito de lidar com esse web service, mas optei por usar axios pela experiência utilizando ele.
+- react-router-dom: para navegação das páginas.
+- styled-component: para estilização da página. É css-in-js, eu resolvi usar para ter maior consistencia com o projeto e experiência utilizando ele.
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Dividi as tarefas em partes:
+- Estilização da tela da estrutura do formulário.
+- Chamada do web service e ajustes na estilização na página de estrutura do formulário
+- Separação das estilizações em componentes da página de estrutura do formulário
+- Estilização da página de respostas.
+- Chamada do web service e ajustes na estilização na página de respostas.
+- Separação das estilizações em componentes da página de respostas
+- Por fim, coloquei reducers para gerenciamento dos estados.
